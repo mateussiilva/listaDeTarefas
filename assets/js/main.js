@@ -1,23 +1,28 @@
 
+const resultado = document.querySelector(".listas-tarefas");
+const inputTarefa = document.querySelector("#input-tarefa");
+const btnAdicionar = document.querySelector(".adicionar");
 
 
-const tarefas = []
-
-
-function criarLista(){
-    const res = document.querySelector(".res")
-    let lista = document.createElement('ul')
-    const el_uls = res.children
-    if (el_uls.length <= 0)     res.appendChild(lista)
-
-}
-
-function criarTarefa(nome_tarefa){
+function clearInput(){
+    inputTarefa.value = ''
+    inputTarefa.focus()
 }
 
 
 
-document.addEventListener('click', (e) => {
-    console.log(e.target);
-    adcionarTarefa()
-})
+function criarItemLista(){
+    const text = inputTarefa.value;
+    if (text.length > 0 ){
+        const li = document.createElement("li");
+        li.innerHTML = text
+        resultado.appendChild(li)
+        
+    }
+    
+}
+
+btnAdicionar.addEventListener("click", function(){
+    criarItemLista();
+    clearInput()
+});
